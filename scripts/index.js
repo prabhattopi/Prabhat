@@ -10,13 +10,18 @@ navbari.innerHTML=navbar();
 import {url,append} from "./fetch.js"
 
 let searchbox=document.getElementById("search_input")
-searchbox.oninput=search
-function search(){
-    let searchbox=document.getElementById("search_input")
-    url(searchbox.value)
-  
-    window.location.href="../search.html"
+searchbox.addEventListener("keydown",search)
+function search(e){
+    if(e.key=="Enter"){
+    
+    
+        localStorage.setItem("for",searchbox.value)
+        window.location.href="../search.html"
+    
+      
+    }
 }
+
 url("in")
 document.getElementById("in").addEventListener("click",()=>{
     url("in")

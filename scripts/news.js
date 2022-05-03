@@ -4,12 +4,12 @@ let navbari=document.getElementById("navbar")
 navbari.innerHTML=navbar()
 
 
-let searchbox=document.getElementById("search_input")
-searchbox.oninput=search
-function search(){
+// let searchbox=document.getElementById("search_input")
+// searchbox.oninput=search
+// function search(){
     
-    window.location.href="../search.html"
-}
+//     window.location.href="../search.html"
+// }
 let data=JSON.parse(localStorage.getItem("news"))
 
 const append=(data)=>{
@@ -35,3 +35,17 @@ const append=(data)=>{
 
 }
 append(data)
+
+
+let searchbox=document.getElementById("search_input")
+searchbox.addEventListener("keydown",search)
+function search(e){
+    if(e.key=="Enter"){
+    
+    
+        localStorage.setItem("for",searchbox.value)
+        window.location.href="../search.html"
+    
+      
+    }
+}

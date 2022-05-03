@@ -6,18 +6,29 @@ let navbari=document.getElementById("navbar")
 navbari.innerHTML=navbar()
 
 
-let searchbox=document.getElementById("search_input")
-searchbox.oninput=falto
-function falto(){
-      
-            let searchibox=document.getElementById("search_input")
+
+
+let searchibox=localStorage.getItem("for")
             
-          fetch(`https://masai-mock-api.herokuapp.com/news?q=${searchibox.value}`).then(res=>res.json()).then(data=>{
+fetch(`https://masai-mock-api.herokuapp.com/news?q=${searchibox}`).then(res=>res.json()).then(data=>{
+ append(data.articles)
+ 
+ 
+    console.log(data)
+})
+let searchbox=document.getElementById("search_input")
+searchbox.addEventListener("keyup",falto)
+function falto(e){
+      if(e.key=="Enter"){
+           let searchiibox=document.getElementById("search_input")
+            
+          fetch(`https://masai-mock-api.herokuapp.com/news?q=${searchiibox.value}`).then(res=>res.json()).then(data=>{
            append(data.articles)
            
            
               console.log(data)
           })
+        }
      
     
        
